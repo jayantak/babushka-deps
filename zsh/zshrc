@@ -1,48 +1,147 @@
-export ZSH=/Users/${USER}/.oh-my-zsh
+# If you come from bash you might have to change your $PATH.
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export EDITOR='subl -w'
 
-#ZSH_THEME="powerlevel9k/powerlevel9k"
-ZSH_THEME="agnoster"
-DEFAULT_USER="${USER}"
+# Path to your oh-my-zsh installation.
+export ZSH="/Users/jayantak/.oh-my-zsh"
 
-HIST_STAMPS="dd.mm.yyyy"
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="robbyrussell"
 
-plugins=(git brew catimg lol nyan osx z)
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+HIST_STAMPS="yyyy-mm-dd"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  brew
+  command-not-found
+  common-aliases
+  docker
+  encode64
+  extract
+  git
+  git-extras
+  osx
+)
+
 source $ZSH/oh-my-zsh.sh
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-eval $(thefuck --alias)
-if [ -f $GOPATH/src/github.com/zquestz/s/autocomplete/s-completion.bash ]; then
-    . $GOPATH/src/github.com/zquestz/s/autocomplete/s-completion.bash
-fi
-alias gpr="git pull -r --autostash"
 
-export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-export PATH=$PATH:/Users/${USER}/Downloads/darwin-amd64
-export PATH=$PATH:~/bin
-export PATH=$PATH:/Users/${USER}/Projects/GoProjects/bin
-export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-export PATH=$PATH:~/.ssh
-export PATH=$PATH:/usr/local/go/bin
-export PATH="$PATH:./Library/Python/2.7/bin"
+# User configuration
 
-export SSH_KEY_PATH="~/.ssh/id_rsa"
-export SSH_KEY_PATH_PUB="~/.ssh/id_rsa.pub"
+# export MANPATH="/usr/local/man:$MANPATH"
 
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-export ANDROID_HOME=/usr/local/opt/android-sdk
-export NVM_DIR="$HOME/.nvm"
-. "$(brew --prefix nvm)/nvm.sh"
-export GOPATH=$HOME/Projects/GoProjects
-export NODE_PATH='/usr/local/lib/node_modules'
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-export PATH="/usr/local/sbin:$PATH"
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
 
-unalias gp
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
 
-hash -d notes="/Users/${USER}/Google Drive File Stream/My Drive/Notes"
-alias notes="sublime ~notes"
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
 
-alias subl="sublime"
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+alias zshconfig="mate ~/.zshrc"
+alias ohmyzsh="mate ~/.oh-my-zsh"
+alias c="cd /Users/jayantak/Projects/src/github.com"
 alias git="hub"
+alias gpr="git pull --rebase --autostash"
+export GITHUB_TOKEN="9cc48e042887929e637e572e98c3a39219d3c707"
+# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-alias soc="sublime ~notes/soc.txt"
+export PATH=/Users/jayantak/Library/Python/2.7/bin:$PATH
+export PATH=/Users/jayantak/CustomShellCommands:$PATH
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/jayantak/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jayantak/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/jayantak/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jayantak/google-cloud-sdk/completion.zsh.inc'; fi
+
+dr() {
+    if [ -n "$1" ]
+    then
+        docker run --rm -it -v "$(pwd)":/app -w /app "$1" bash
+    else
+        docker run --rm -it -v "$(pwd)":/app -w /app alpine bash
+    fi
+}
+
+dev-kube() {
+	export KUBECONFIG=$HOME/.kube/config.hyper-dev-jay
+}
+
+debug-kube() {
+	export KUBECONFIG=$HOME/.kube/config.goeuro-debug
+}
+
+
+notes() {
+  cd /Users/jayantak/Projects/src/github.com/jayantak/notes
+  ./update.sh
+  subl /Users/jayantak/Projects/src/github.com/jayantak/notes
+}
+# added by travis gem
+[ -f /Users/jayantak/.travis/travis.sh ] && source /Users/jayantak/.travis/travis.sh
